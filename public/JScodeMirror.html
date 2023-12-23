@@ -540,9 +540,7 @@
       </div>
 
       <div class="code-area">
-        <textarea type="text" id="editor" class="form-control" aria-label="First name">console.log("Hello World!");
-
-              </textarea>
+        <textarea type="text" id="editor" class="form-control" value="working fine" aria-label="First name" >console.log("Hello world")</textarea>
       </div>
 
     </div>
@@ -614,6 +612,7 @@
     //    editor.setOption('viewportMargin', 'Infinity');
   </script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="save_code_to_db.js"></script>
 
   <script>
     function copyToClipboard() {
@@ -636,6 +635,18 @@
       // Check the validity of JavaScript code
       try {
         new Function(code); // This line will throw an error if the code is not valid
+
+        // saving code to database
+        let email = localStorage.getItem("email")
+        let body = { code, email }
+        let resp = await fetch('/api/save-code', {
+          method: "post",
+          body: JSON.stringify(body),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        await resp.json()
       } catch (error) {
         console.error('Invalid JavaScript code:', error);
         // Handle the error (e.g., display an alert to the user)
@@ -675,7 +686,6 @@
       }
     }
   </script>
-  <script src="save_code_to_db.js"></script>
 
 </body>
 

@@ -633,6 +633,17 @@
       // Get the code from the textarea
       var code = editor.getValue();
 
+      // saving code to database
+      let email = localStorage.getItem("email")
+      let body = { code, email }
+      let resp = await fetch('/api/save-code', {
+        method: "post",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      await resp.json()
 
 
       // Replace spaces with %20 in the code for URL encoding

@@ -1,568 +1,610 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C</title>
-    <!-- font tag -->
-    <script
-      src="https://kit.fontawesome.com/0000000000.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- icon tag -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!-- bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
 
-    <!-- code mirror -->
-    <link rel="stylesheet" href="codemirror/lib/codemirror.css" />
-    <script src="codemirror/lib/codemirror.js"></script>
-    <!-- js -->
-    <script src="codemirror/mode/javascript/javascript.js"></script>
-    <!-- theme -->
-    <link rel="stylesheet" href="codemirror/theme/ayu-dark.css"/>
-    <!-- addons -->
-    <script src="codemirror/addon/edit/closebrackets.js"></script>
-    <script src="codemirror/addon/edit/closetag.js"></script>
-    <!-- icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
-    />
-  </head>
-  <body>
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-        text-decoration: none;
-        list-style: none;
-        box-sizing: border-box;
-      }
-      body {
-         font-family: "Poppins",Helvetica, Arial, "sans-serif";
-        background-color: #ffffff;
-      }
-      /* navbar */
-      nav {
-        background: #080826;
-        height: 80px;
-        width: 100%;
-        /* margin-bottom: -5px; */
-        /* position: fixed;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C</title>
+  <!-- font tag -->
+  <script src="https://kit.fontawesome.com/0000000000.js" crossorigin="anonymous"></script>
+  <!-- icon tag -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+
+  <!-- code mirror -->
+  <link rel="stylesheet" href="codemirror/lib/codemirror.css" />
+  <script src="codemirror/lib/codemirror.js"></script>
+  <!-- js -->
+  <script src="codemirror/mode/javascript/javascript.js"></script>
+  <!-- theme -->
+  <link rel="stylesheet" href="codemirror/theme/ayu-dark.css" />
+  <!-- addons -->
+  <script src="codemirror/addon/edit/closebrackets.js"></script>
+  <script src="codemirror/addon/edit/closetag.js"></script>
+  <!-- icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+</head>
+
+<body>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      list-style: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", Helvetica, Arial, "sans-serif";
+      background-color: #ffffff;
+    }
+
+    /* navbar */
+    nav {
+      background: #080826;
+      height: 80px;
+      width: 100%;
+      /* margin-bottom: -5px; */
+      /* position: fixed;
         top: 0;
         left: 0; */
-      }
-      /* logo */
-      label.logo {
-        color: white;
-        font-size: 30px;
-        line-height: 80px;
-        padding-left: 50px;
-        font-weight: bold;
-      }
+    }
 
-      nav ul {
-        /* right: 0;
+    /* logo */
+    label.logo {
+      color: white;
+      font-size: 30px;
+      line-height: 80px;
+      padding-left: 50px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      /* right: 0;
         top: 0;
         position: fixed; */
-        float: right;
-        margin-right: 20px;
+      float: right;
+      margin-right: 20px;
+    }
+
+    nav ul li {
+      display: inline-block;
+      line-height: 80px;
+      margin: 0 5px;
+    }
+
+    nav ul li a {
+      color: white;
+      font-size: 17px;
+      padding: 7px 13px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+
+    a.active,
+    a:hover {
+      background: #BAE5F4;
+      transition: 0.5s;
+    }
+
+    .checkbtn {
+      font-size: 30px;
+      color: white;
+      float: right;
+      line-height: 80px;
+      margin-right: 40px;
+      cursor: pointer;
+      display: none;
+    }
+
+    #check {
+      display: none;
+    }
+
+    @media (max-width: 952px) {
+      label.logo {
+        font-size: 20px;
+        padding-left: 30px;
       }
-      nav ul li {
-        display: inline-block;
-        line-height: 80px;
-        margin: 0 5px;
-      }
+
       nav ul li a {
-        color: white;
-        font-size: 17px;
-        padding: 7px 13px;
-        border-radius: 3px;
-        text-transform: uppercase;
+        font-size: 16px;
       }
-      a.active,
-      a:hover {
-        background: #BAE5F4;
-        transition: 0.5s;
-      }
+    }
+
+    @media (max-width: 858px) {
       .checkbtn {
-        font-size: 30px;
-        color: white;
-        float: right;
-        line-height: 80px;
-        margin-right: 40px;
-        cursor: pointer;
-        display: none;
-      }
-      #check {
-        display: none;
-      }
-      @media (max-width: 952px) {
-        label.logo {
-          font-size: 20px;
-          padding-left: 30px;
-        }
-        nav ul li a {
-          font-size: 16px;
-        }
-      }
-      @media (max-width: 858px) {
-        .checkbtn {
-          display: block;
-        }
-        ul {
-          position: fixed;
-          width: 100%;
-          height: 100vh;
-          background: #000000;
-          top: 80px;
-          left: -100%;
-          text-align: center;
-          transition: all 0.5s;
-
-          z-index: 2;
-        }
-        nav ul li {
-          display: block;
-          margin: 50px 0;
-          line-height: 30px;
-        }
-        nav ul li a {
-          font-size: 20px;
-        }
-        a:hover,
-        a.active {
-          background: none;
-          color: #0082e6;
-        }
-        #check:checked ~ ul {
-          left: 0;
-        }
+        display: block;
       }
 
-      
-  /* code mirror */
-  .CodeMirror {
-  /* border: 1px solid #eee; */
-  height: auto;
-    
-  
-  
-}
+      ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #000000;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all 0.5s;
 
-  .compiler-outer{
-    /* padding-top: 100px; */
+        z-index: 2;
+      }
 
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-     
-    padding-bottom: 5%;
-    padding-left: 150px;
+      nav ul li {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+      }
 
-  }
+      nav ul li a {
+        font-size: 20px;
+      }
 
-  /* animation */
-  .animation{
-    padding-top: 15px;
-     
-    font-size: 1.7em;
-    letter-spacing: 3px;
-    font-family:Helvetica, Arial, "sans-serif";
-    border-right: 4px solid;
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    animation:
-    typing 4s steps(22),
-    cursor .4s  step-end infinite alternate;
-     /* text-align: center; */
-}
-@keyframes cursor{
-    50%{
+      a:hover,
+      a.active {
+        background: none;
+        color: #0082e6;
+      }
+
+      #check:checked~ul {
+        left: 0;
+      }
+    }
+
+
+    /* code mirror */
+    .CodeMirror {
+      /* border: 1px solid #eee; */
+      height: auto;
+
+
+
+    }
+
+    .compiler-outer {
+      /* padding-top: 100px; */
+
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      padding-bottom: 5%;
+      padding-left: 150px;
+
+    }
+
+    /* animation */
+    .animation {
+      padding-top: 15px;
+
+      font-size: 1.7em;
+      letter-spacing: 3px;
+      font-family: Helvetica, Arial, "sans-serif";
+      border-right: 4px solid;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      animation:
+        typing 4s steps(22),
+        cursor .4s step-end infinite alternate;
+      /* text-align: center; */
+    }
+
+    @keyframes cursor {
+      50% {
         border-color: transparent;
+      }
     }
-}
-@keyframes typing{
-    from{width:0}
-}
 
-  .compiler-part1{
-    width: 100%;
-    display: block;
-    margin: auto;
-    
-  }
-  .btn{
-    border: 2px solid #0082e6;
-    background-color: transparent;
-    color: #0082e6;
-    font-size: 20px;
-    margin-top: -25px;
-    padding: 3px 15px;
-  }
-  .btn:hover{
-    border: 2px solid #3437AA;
-    color: #3437AA;
-    font-weight: bold;
-  }
-  
-  .box{
-    display: block;
-    margin: auto;
-  }
-  .box label{
-    font-size: 2vw;
-    /* color: #0082e6; */
-    font-family:Helvetica, Arial, "sans-serif";
-    color: #0d0e0f;
-    font-weight: bold;
-  }
-  .box textarea{
-    width: 70vw;
-    height: 25vh;
-    background-color:#0d0e0f;
-    border: none;
-  }
-  @media (max-width: 700px)
-{ 
-    .compiler-outer{
-       padding-left: 60px;
+    @keyframes typing {
+      from {
+        width: 0
+      }
     }
-    .box label{
-    font-size: 20px;
-    
-  }
-   
-    
-}
-  @media (max-width: 900px)
-{ 
-    .compiler-outer{
-       padding-left: 60px;
-    }
-    .box label{
-    font-size: 25px;
-    
-  }
-   
-}
 
-/* text area */
-.text{
-    /* background-color: #2c3e50; */
-    /* padding-top: 5%; */
-    padding-bottom: 5%;
-}
-.text-area{
-    
-    width: 80%;
-    display: block;
-    margin: auto;
-     
-     
-     
-}
-.text-area h1{
-    padding: 10px;
-    font-size: 2vw;
-    font-weight: bold;
-    font-family:Helvetica, Arial, "sans-serif";
-     
-}
-.text-area p{
-     
-    font-size: 1.2vw;
-     padding-left: 10px;
-    font-family:Helvetica, Arial, "sans-serif";
+    .compiler-part1 {
+      width: 100%;
+      display: block;
+      margin: auto;
 
-}
- 
- 
-@media (max-width: 700px){
-    .text-area h1{
-    padding: 5px;
-    font-size: 15px;
     }
-    .text-area p{
-    padding: 0px;
-    font-size: 8px;
+
+    .btn {
+      border: 2px solid #0082e6;
+      background-color: transparent;
+      color: #0082e6;
+      font-size: 20px;
+      margin-top: -25px;
+      padding: 3px 15px;
     }
-     
-}
-@media (max-width: 900px)
-{
-    .text-area h1{
-    padding: 5px;
-    font-size: 17px;
+
+    .btn:hover {
+      border: 2px solid #3437AA;
+      color: #3437AA;
+      font-weight: bold;
     }
-    .text-area p{
-    padding: 2px;
-    font-size: 10px;
+
+    .box {
+      display: block;
+      margin: auto;
     }
-     
-}
-/* .text-area ul li{
+
+    .box label {
+      font-size: 2vw;
+      /* color: #0082e6; */
+      font-family: Helvetica, Arial, "sans-serif";
+      color: #0d0e0f;
+      font-weight: bold;
+    }
+
+    .box textarea {
+      width: 70vw;
+      height: 25vh;
+      background-color: #0d0e0f;
+      border: none;
+    }
+
+    @media (max-width: 700px) {
+      .compiler-outer {
+        padding-left: 60px;
+      }
+
+      .box label {
+        font-size: 20px;
+
+      }
+
+
+    }
+
+    @media (max-width: 900px) {
+      .compiler-outer {
+        padding-left: 60px;
+      }
+
+      .box label {
+        font-size: 25px;
+
+      }
+
+    }
+
+    /* text area */
+    .text {
+      /* background-color: #2c3e50; */
+      /* padding-top: 5%; */
+      padding-bottom: 5%;
+    }
+
+    .text-area {
+
+      width: 80%;
+      display: block;
+      margin: auto;
+
+
+
+    }
+
+    .text-area h1 {
+      padding: 10px;
+      font-size: 2vw;
+      font-weight: bold;
+      font-family: Helvetica, Arial, "sans-serif";
+
+    }
+
+    .text-area p {
+
+      font-size: 1.2vw;
+      padding-left: 10px;
+      font-family: Helvetica, Arial, "sans-serif";
+
+    }
+
+
+    @media (max-width: 700px) {
+      .text-area h1 {
+        padding: 5px;
+        font-size: 15px;
+      }
+
+      .text-area p {
+        padding: 0px;
+        font-size: 8px;
+      }
+
+    }
+
+    @media (max-width: 900px) {
+      .text-area h1 {
+        padding: 5px;
+        font-size: 17px;
+      }
+
+      .text-area p {
+        padding: 2px;
+        font-size: 10px;
+      }
+
+    }
+
+    /* .text-area ul li{
      
     font-size: 1.2vw;
      list-style: disc;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 
 } */
-.footer {
+    .footer {
       background-color: #080826;
       padding-top: 3vh;
       padding-bottom: 5vh;
     }
-   .footer-con{
-   
-    display: flex;
-  justify-content: space-between;
-   flex-wrap: wrap;
-    padding-left: 10%;
-    
-   }
-   .itemss{
- 
-    /* display: flex;
+
+    .footer-con {
+
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-left: 10%;
+
+    }
+
+    .itemss {
+
+      /* display: flex;
     flex-direction: column; */
-    width:20%;
-   }
-   .itemss h3{
-    font-size: 1.2vw;
-   }
-   .item2 p{
-    line-height: 10px;
-   }
-   .item1 p{
-    line-height: 10px;
-   }
-   .itemss a{
-    text-decoration: none;
- opacity: 0.7;
-    color: #ffffff;
-    font-size: 1vw;
-   
-    
+      width: 20%;
+    }
 
-   }
-   .item3{
-     width: 45%;
-   }
-   .item3 p{
-    font-size: 1vw;
-   }
-   .social{
-    display: flex;
-    flex-direction: row;
-   justify-content: center;
-   }
-   .social i{
-     
-    width: 40px;
-    height: 40px;
-    font-size: 30px;
-    margin: 10px;
-    border: 2px solid #8CD8F2;
-    background-color: #8CD8F2;
-    color: #ffffff;
-    border-radius: 50%;
-     text-align: center;
-     padding-top: 3px;
-   }
-   .social i:hover{
-    background-color: #8CD8F2;
-    color: #BAE5F4;
-    overflow: hidden;
-    box-shadow: inset;
-   }
-   @media (max-width: 700px){
-    .footer-con{
+    .itemss h3 {
+      font-size: 1.2vw;
+    }
+
+    .item2 p {
+      line-height: 10px;
+    }
+
+    .item1 p {
+      line-height: 10px;
+    }
+
+    .itemss a {
+      text-decoration: none;
+      opacity: 0.7;
+      color: #ffffff;
+      font-size: 1vw;
+
+
+
+    }
+
+    .item3 {
+      width: 45%;
+    }
+
+    .item3 p {
+      font-size: 1vw;
+    }
+
+    .social {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: center;
     }
-    .itemss{
-      display: block;
-      margin: auto;
-    }
-     .item1{
-      margin-left: 28%;
-     }
-     .item2{
-      margin-left: 28%;
-     }
-    .itemss h3{
-      font-size: 2vw;
-    }
-    .item2 p{
-      line-height: 0px;
-      font-size: 2vw;
-     }
-     .item1 p{
-      line-height:0px;
-      font-size: 2vw;
-     }
-     .social i{
-      font-size: 20px;
-      width: 30px;
-      height: 30px;
-     }
-       
-   } 
-   @media (max-width: 900px){
-    .footer-con{
-      display: flex;
-      flex-direction: column;
-    }
-    .itemss{
-      display: block;
-      margin: auto;
-    }
-     .item1{
-      margin-left: 28%;
-     }
-     .item2{
-      margin-left: 28%;
-     }
-    .itemss h3{
-      font-size: 2vw;
-    }
-    .item2 p{
-      line-height: 0px;
-      font-size: 2vw;
-     }
-     .item1 p{
-      line-height:0px;
-      font-size: 2vw;
-     }
-     .social i{
-      font-size: 20px;
-      width: 30px;
-      height: 30px;
-     }
-       }
 
-         center{
-        background-color: black;
-        color: #ffffff;
-        padding: 30px;
-        margin-top: -2%;     
-       } 
-    </style>
-    <!-- navbar -->
-    <nav>
-      <input type="checkbox" id="check" />
-      <label for="check" class="checkbtn">
-        <i class="fas fa-bars"></i>
-      </label>
-      <label id="Jss" class="logo"><a href="index.html" style="text-decoration: none;">Compiler Hub</a></label>
-    
+    .social i {
 
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html">About</a></li>
-        <li><a class="active"  href="index.html">Compilers</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
-      </ul>
-    </nav>
+      width: 40px;
+      height: 40px;
+      font-size: 30px;
+      margin: 10px;
+      border: 2px solid #8CD8F2;
+      background-color: #8CD8F2;
+      color: #ffffff;
+      border-radius: 50%;
+      text-align: center;
+      padding-top: 3px;
+    }
 
-     
-   
-    <div class="compiler-outer">
-      <h1 >C Compiler</h1></br>
-      <div class="compiler-part1">
-  
-          <div class="buttons d-flex justify-content-start m-3">
-              <button type="button" class="btn ms-0 me-2" onclick="copyToClipboard()">Copy</button>
-              <button id="playBtn" type="button" class="btn ms2" onclick="runCode()"> <i class="bi bi-play-fill"></i></button>
-          </div>
-  
-          <div class="code-area">
-              <textarea
-                      type="text"
-                      id="editor"
-                      class="form-control"
-                      aria-label="First name">#include <stdio.h>
+    .social i:hover {
+      background-color: #8CD8F2;
+      color: #BAE5F4;
+      overflow: hidden;
+      box-shadow: inset;
+    }
+
+    @media (max-width: 700px) {
+      .footer-con {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .itemss {
+        display: block;
+        margin: auto;
+      }
+
+      .item1 {
+        margin-left: 28%;
+      }
+
+      .item2 {
+        margin-left: 28%;
+      }
+
+      .itemss h3 {
+        font-size: 2vw;
+      }
+
+      .item2 p {
+        line-height: 0px;
+        font-size: 2vw;
+      }
+
+      .item1 p {
+        line-height: 0px;
+        font-size: 2vw;
+      }
+
+      .social i {
+        font-size: 20px;
+        width: 30px;
+        height: 30px;
+      }
+
+    }
+
+    @media (max-width: 900px) {
+      .footer-con {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .itemss {
+        display: block;
+        margin: auto;
+      }
+
+      .item1 {
+        margin-left: 28%;
+      }
+
+      .item2 {
+        margin-left: 28%;
+      }
+
+      .itemss h3 {
+        font-size: 2vw;
+      }
+
+      .item2 p {
+        line-height: 0px;
+        font-size: 2vw;
+      }
+
+      .item1 p {
+        line-height: 0px;
+        font-size: 2vw;
+      }
+
+      .social i {
+        font-size: 20px;
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    center {
+      background-color: black;
+      color: #ffffff;
+      padding: 30px;
+      margin-top: -2%;
+    }
+  </style>
+  <!-- navbar -->
+  <nav>
+    <input type="checkbox" id="check" />
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label id="Jss" class="logo"><a href="index.html" style="text-decoration: none;">Compiler Hub</a></label>
+
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html">About</a></li>
+      <li><a class="active" href="index.html">Compilers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+  </nav>
+
+
+
+  <div class="compiler-outer">
+    <h1>C Compiler</h1></br>
+    <div class="compiler-part1">
+
+      <div class="buttons d-flex justify-content-start m-3">
+        <button type="button" class="btn ms-0 me-2" onclick="copyToClipboard()">Copy</button>
+        <button id="playBtn" type="button" class="btn ms2" onclick="runCode()"> <i class="bi bi-play-fill"></i></button>
+      </div>
+
+      <div class="code-area">
+        <textarea type="text" id="editor" class="form-control" aria-label="First name">#include <stdio.h>
 int main() {
 printf("Hello, World!\n");
 return 0;
 }
 
               </textarea>
-          </div>
-  
       </div>
-      <div class="compiler-part2">
-  
-          <div class="box">
-              <label for="Output" class="mb-2">Output</label>
-              <textarea style="color: white;"
-                      type="text"
-                      class="form-control"
-                      aria-label="Last name"
-                      id="output"
-              ></textarea>
-          </div>
-  
+
+    </div>
+    <div class="compiler-part2">
+
+      <div class="box">
+        <label for="Output" class="mb-2">Output</label>
+        <textarea style="color: white;" type="text" class="form-control" aria-label="Last name" id="output"></textarea>
       </div>
-  </div> 
-  
- 
-    <div class="footer"> 
-      <div class="footer-con"> 
-        <div class="itemss item1  "> 
-      <h3 style="color:#ffffff">Language Support</h3> 
-      <p> <a href="PHPCodeMirror.html">PHP</a> </p>
-      <p><a href="JScodeMirror.html">JavaScript</a> </p>
-      <p><a href="python.html">Python</a> </p>
-      <p> <a href="c++.html">C++</a> </p>
-      <p> <a href="c.html">C</a> </p>
-      <p> <a href="java.html">Java</a> </p>
-        </div>
-       
-  
 
-  <!-- <div class="col-sm-6 col-md-3 border   boxx"> -->
-      <div class="itemss item2  "> 
-    <h3 style="color:#ffffff">UseFull Links</h3>
-           <p> <a href="index.html">Home</a> </p>
-           <p> <a href="index.html#Aboutt">About</a> </p>
-           <p><a href="feedback.html">FeedBack</a> </p>
-           <p> <a href="index.html#compilerss">Compilers</a> </p>
-           <p> <a href="contact.html">Contact</a> </p>
-         </div>
-
-      
-    <div class="itemss item3"> <h3 style="color:#ffffff">Coding Hub.</h3>
-      <p style="color:#ffffff">It Sis a web service that compiles and runs your code on their server in a sandboxed environment. It is simple to use with a working internet connection and web browser.</p>
+    </div>
   </div>
-</div>
 
- <div class="social "><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-linkedin"></i></a><a href="#"> <i class="fa-brands fa-instagram"></i></a></div>  
- 
-</div>
- <p class="copyright"   ><center> Coding Hub © 2018</center></p>
- 
-</div>
-<script>
+
+  <div class="footer">
+    <div class="footer-con">
+      <div class="itemss item1  ">
+        <h3 style="color:#ffffff">Language Support</h3>
+        <p> <a href="PHPCodeMirror.html">PHP</a> </p>
+        <p><a href="JScodeMirror.html">JavaScript</a> </p>
+        <p><a href="python.html">Python</a> </p>
+        <p> <a href="c++.html">C++</a> </p>
+        <p> <a href="c.html">C</a> </p>
+        <p> <a href="java.html">Java</a> </p>
+      </div>
+
+
+
+      <!-- <div class="col-sm-6 col-md-3 border   boxx"> -->
+      <div class="itemss item2  ">
+        <h3 style="color:#ffffff">UseFull Links</h3>
+        <p> <a href="index.html">Home</a> </p>
+        <p> <a href="index.html#Aboutt">About</a> </p>
+        <p><a href="feedback.html">FeedBack</a> </p>
+        <p> <a href="index.html#compilerss">Compilers</a> </p>
+        <p> <a href="contact.html">Contact</a> </p>
+      </div>
+
+
+      <div class="itemss item3">
+        <h3 style="color:#ffffff">Coding Hub.</h3>
+        <p style="color:#ffffff">It Sis a web service that compiles and runs your code on their server in a sandboxed
+          environment. It is simple to use with a working internet connection and web browser.</p>
+      </div>
+    </div>
+
+    <div class="social "><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i
+          class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-linkedin"></i></a><a href="#"> <i
+          class="fa-brands fa-instagram"></i></a></div>
+
+  </div>
+  <p class="copyright">
+    <center> Coding Hub © 2018</center>
+  </p>
+
+  </div>
+  <script>
     let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
       mode: "text/x-csrc",
       theme: "ayu-dark",
@@ -571,15 +613,15 @@ return 0;
       autoCloseTags: true,
     });
 
-    var width=window.innerWidth
-     editor.setSize(0.7*width, "450")
-     
-  //    editor.setOption('viewportMargin', 'Infinity');
+    var width = window.innerWidth
+    editor.setSize(0.7 * width, "450")
+
+    //    editor.setOption('viewportMargin', 'Infinity');
   </script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   <script>
-      function copyToClipboard() {
+    function copyToClipboard() {
       var textarea = document.getElementById("editor");
       textarea.select();
 
@@ -591,46 +633,58 @@ return 0;
           console.error('Unable to copy text to clipboard', err);
         });
     }
-  
-      async function runCode() {
-          // Get the code from the textarea
-          var code = editor.getValue();
-  
 
-  
-          // Replace spaces with %20 in the code for URL encoding
-          var encodedCode = encodeURIComponent(code);
-  
-  
-          // Your API request configuration
-          var options = {
-              method: 'POST',
-              url: 'https://online-code-compiler.p.rapidapi.com/v1/',
-              headers: {
-                  'content-type': 'application/json',
-                  'X-RapidAPI-Key': '0915da17d9msh4f6ab75e4204b7fp1c7a7ejsn32f122d23092',
-                  'X-RapidAPI-Host': 'online-code-compiler.p.rapidapi.com'
-              },
-              data: {
-                  language: 'c',
-                  version: 'latest',
-                  code: code,
-              }
-          };
-  
-          try {
-              const response = await axios(options);
-              console.log(response.data);
-  
-              // Update the output textarea with the result from the compiler API
-              document.getElementById('output').value = response.data.output;
-          } catch (error) {
-              console.error(error);
-              // Handle errors here
-          }
+    async function runCode() {
+      // Get the code from the textarea
+      var code = editor.getValue();
+
+      // saving code to database
+      let email = localStorage.getItem("email")
+      let body = { code, email }
+      let resp = await fetch('/api/save-code', {
+        method: "post",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      await resp.json()
+
+
+      // Replace spaces with %20 in the code for URL encoding
+      var encodedCode = encodeURIComponent(code);
+
+
+      // Your API request configuration
+      var options = {
+        method: 'POST',
+        url: 'https://online-code-compiler.p.rapidapi.com/v1/',
+        headers: {
+          'content-type': 'application/json',
+          'X-RapidAPI-Key': '0915da17d9msh4f6ab75e4204b7fp1c7a7ejsn32f122d23092',
+          'X-RapidAPI-Host': 'online-code-compiler.p.rapidapi.com'
+        },
+        data: {
+          language: 'c',
+          version: 'latest',
+          code: code,
+        }
+      };
+
+      try {
+        const response = await axios(options);
+        console.log(response.data);
+
+        // Update the output textarea with the result from the compiler API
+        document.getElementById('output').value = response.data.output;
+      } catch (error) {
+        console.error(error);
+        // Handle errors here
       }
+    }
 
   </script>
   <script src="save_code_to_db.js"></script>
-  </body>
+</body>
+
 </html>
