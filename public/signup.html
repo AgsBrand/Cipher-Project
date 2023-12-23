@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Cipher - Login</title>
+</head>
+
+<body>
+    <div class="login flex items-center flex-col justify-center min-h-screen h-full p-4 bg-blue-400">
+        <div id="alert"
+            class="overflow-hidden duration-300 mb-2 w-0 h-0 bg-green-600 mb-2 leading-[50px] rounded-[8px] text-white text-center">
+            This is the alert</div>
+        <div class="content flex flex-col bg-white rounded-[8px] p-4 w-[350px] shadow-slate-400 shadow-md">
+            <div class="heading text-[30px]">
+                <h1 class="text-center">
+                    Signup
+                </h1>
+            </div>
+            <div class="form">
+                <form action="" class="flex flex-col" onsubmit="signup(event)">
+                    <label for="email">Full name</label>
+                    <input id="fullName" class="outline-1 outline-slate-400 bg-slate-200 p-2 rounded-[4px]" type="text"
+                        placeholder="Fullname" required>
+                    <label for="email" class="mt-4">Email</label>
+                    <input id="email" class="outline-1 outline-slate-400 bg-slate-200 p-2 rounded-[4px]" type="email"
+                        placeholder="Email" required>
+                    <label for="email" class="mt-4">Password</label>
+                    <input id="password" class="outline-1 outline-slate-400 bg-slate-200 p-2 rounded-[4px]"
+                        type="password" placeholder="Password" required>
+                    <button
+                        class="p-2 rounded-[8px] text-white text-[18px] bg-blue-400 mt-5 hover:bg-blue-500 duration-300">Sginup</button>
+                    <div class="flex w-full items-center justify-center mt-6 gap-1">
+                        <p class="text-slate-600">
+                            Already have an account?
+                        </p>
+                        <a href="login.html" class="text-blue-400 underline hover:text-blue-700 duration-300"> Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function signup(event) {
+            event.preventDefault()
+            let fullName = document.getElementById("fullName").value
+            let email = document.getElementById("email").value
+            let password = document.getElementById("password").value
+            let body = {
+                fullName, email, password
+            }
+            const URL = "/api/signup"
+            fetch(URL, {
+                method: "post",
+                body: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((resp) => {
+                return resp.json()
+            }).then((res) => {
+                console.log(res)
+                if (res.status == 200) {
+                    showAlert(res.message + " login now", "bg-green-600")
+                } else {
+                    showAlert(res.message, "bg-red-400")
+                }
+            })
+        }
+        function showAlert(msg, type) {
+            let alert = document.getElementById("alert")
+            alert.textContent = msg
+            alert.classList.add(type)
+            alert.style.width = "350px"
+            alert.style.height = "50px"
+
+            setTimeout(() => {
+                alert.style.width = "0"
+                alert.style.height = "0"
+            }, 3000);
+        }
+    </script>
+
+
+</body>
+
+</html>

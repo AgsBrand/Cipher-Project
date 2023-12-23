@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Cipher - Login</title>
+</head>
+
+<body>
+    <div class="login flex items-center flex-col justify-center min-h-screen h-full bg-blue-400">
+        <h1 class="font-bold text-[30px] mb-4 text-white">Welcome back to Cipher</h1>
+        <div class="content flex flex-col bg-white rounded-[8px] p-4 w-[350px] shadow-slate-400 shadow-md">
+            <div class="heading text-[30px]">
+                <h1 class="text-center">
+                    Login
+                </h1>
+            </div>
+            <div class="form">
+                <form class="flex flex-col" id="loginForm" onsubmit="login(event)">
+                    <label for="email">Email</label>
+                    <input id="email" class="outline-1 outline-slate-400 bg-slate-200 p-2 rounded-[4px]" type="email"
+                        placeholder="Email" required>
+                    <label for="email" class="mt-4">Password</label>
+                    <input id="password" class="outline-1 outline-slate-400 bg-slate-200 p-2 rounded-[4px]"
+                        type="password" placeholder="Password" required>
+                    <button type="submit"
+                        class="p-2 rounded-[8px] text-white text-[18px] bg-blue-400 mt-5 hover:bg-blue-500 duration-300">Login</button>
+                </form>
+                <div class="flex w-full items-center justify-center mt-6 gap-1">
+                    <p class="text-slate-600">
+                        Don't have an account?
+                    </p>
+                    <a href="signup.html" class="text-blue-400 underline hover:text-blue-700 duration-300">Signup</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function login(event) {
+            event.preventDefault()
+            let email = document.getElementById("email").value
+            let password = document.getElementById("password").value
+            let body = {
+                email, password
+            }
+            const URL = "/api/login"
+            fetch(URL, {
+                method: "post",
+                body: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((resp)=> {
+                return resp.json()
+            }).then((res)=> {
+                localStorage.setItem("token", res.token)
+                localStorage.setItem("email", res.email)
+                location.href = ("/index.html")
+            })
+        }
+    </script>
+</body>
+
+</html>

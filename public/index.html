@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Cipher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- font tag -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Mitr:wght@300&family=Montserrat:wght@100&family=Oswald:wght@300&family=Roboto:wght@300&family=Saira+Condensed:wght@100;200&family=Shadows+Into+Light&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind css linking -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- icons tag -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://kit.fontawesome.com/31d0b032ff.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">!
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <!-- bootstrap cdn -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+  <!-- font Awesome  -->
+  <script src="https://kit.fontawesome.com/0000000000.js" crossorigin="anonymous"></script>
+
+
+  <style>
+    .spinnerContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .spinner {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      border: 4px solid #0000;
+      border-radius: 50%;
+      border-right-color: #299fff;
+      animation: tri-spinner 1s infinite linear;
+    }
+
+    .spinner::before,
+    .spinner::after {
+      content: "";
+      grid-area: 1/1;
+      margin: 2px;
+      border: inherit;
+      border-radius: 50%;
+      animation: tri-spinner 2s infinite;
+    }
+
+    .spinner::after {
+      margin: 8px;
+      animation-duration: 3s;
+    }
+
+    @keyframes tri-spinner {
+      100% {
+        transform: rotate(1turn);
+      }
+    }
+
+    .loader {
+      color: #4a4a4a;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-size: 25px;
+      -webkit-box-sizing: content-box;
+      box-sizing: content-box;
+      height: 40px;
+      padding: 10px 10px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      border-radius: 8px;
+    }
+
+    .words {
+      overflow: hidden;
+    }
+
+    .word {
+      display: block;
+      height: 100%;
+      padding-left: 6px;
+      color: #299fff;
+      animation: cycle-words 5s infinite;
+    }
+
+    @keyframes cycle-words {
+      10% {
+        -webkit-transform: translateY(-105%);
+        transform: translateY(-105%);
+      }
+
+      25% {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+      }
+
+      35% {
+        -webkit-transform: translateY(-205%);
+        transform: translateY(-205%);
+      }
+
+      50% {
+        -webkit-transform: translateY(-200%);
+        transform: translateY(-200%);
+      }
+
+      60% {
+        -webkit-transform: translateY(-305%);
+        transform: translateY(-305%);
+      }
+
+      75% {
+        -webkit-transform: translateY(-300%);
+        transform: translateY(-300%);
+      }
+
+      85% {
+        -webkit-transform: translateY(-405%);
+        transform: translateY(-405%);
+      }
+
+      100% {
+        -webkit-transform: translateY(-400%);
+        transform: translateY(-400%);
+      }
+    }
+    #welcomeDiv {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  
+
+  <nav style="z-index: 1;">
+    <input type="checkbox" id="check" />
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label id="Homee" class="logo"><a href="index.html" style="text-decoration: none;">Compiler Hub</a></label>
+
+    <ul>
+      <li><a style="text-decoration: none" class="active" href="index.html">Home</a></li>
+      <li><a style="text-decoration: none" href="#Aboutt">About</a></li>
+      <li><a style="text-decoration: none" href="#compilerss" onclick="nv" id="nav-c">Compilers</a></li>
+      <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
+      <li><a style="text-decoration: none" href="feedback.html">Feedback</a></li>
+      <li id="login"><a style="text-decoration: none; background: blue;" href="login.html">Login</a></li>
+      <li id="signup"><a style="text-decoration: none; background: green;" href="signup.html">Signup</a></li>
+    </ul>
+  </nav>
+  <!-- using tailwind css to style the div -->
+  <div id="welcomeDiv" style="color: rgba(255, 255, 255, 0.863);" class="showName gap-[07px] text-[22px] bg-blue-800 mt-[54px] h-50px leading-[50px] text-center flex items-center justify-center" id="showName">
+    Welcome back <span id="fullName" class="leading-[50px] "></span>
+  </div>
+  
+
+  <section id="header" class="header" style="padding-top: 0;">
+    <h2 class="text">
+      Write, test, and debug code in various programming languages from your
+      browser.
+    </h2>
+  </section>
+
+
+  <section class="home">
+    <div class="home-container">
+      <div class="home-text">
+        <h1 id="Compilerss" style="color:#ffffff">Experience hassle-free coding with our online compiler!</h1>
+        <p style="color:#ffffff">
+          Enjoy instant results, real-time error checking, and collaborative
+          coding. Whether you're a beginner or a seasoned developer,
+          streamline your coding workflow with our user-friendly online
+          compiler today.
+        </p>
+      </div>
+      <div class="home-img">
+        <img src="images/pic1.png" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <div class="spinnerContainer">
+    <div class="spinner"></div>
+    <div class="loader">
+      <p>Compiler</p>
+      <div class="words">
+        <span class="word">JavaScript</span>
+        <span class="word">Python</span>
+        <span class="word">C++</span>
+        <span class="word">Java</span>
+        <span class="word">PHP</span>
+      </div>
+    </div>
+  </div>
+  <section class="compiler-container">
+    <!-- <div class="compiler-text"> 
+        <h1 id=" ">Compiler</h1>
+        <p>Choose One Of The Language To Run Code From Your Browser</p> -->
+    </div>
+    <div class="compiler-boxes" id="compilerss">
+      <div class="box">
+        <img src="images/js.png" alt="">
+        <i class="fa-solid fa-person-walking-arrow-right"></i>
+        <a href="JScodeMirror.html">
+          <h1>JavaScript Compiler</h1>
+        </a>
+      </div>
+
+
+      <div class="box">
+        <img src="images/php.png" alt="">
+        <i class="fa-solid fa-person-walking-arrow-right"></i>
+        <a href="PHPCodeMirror.html">
+          <h1>PHP Compiler</h1>
+        </a>
+      </div>
+
+      <div class="box">
+        <img src="images/c++.png" alt="">
+        <i class="fa-solid fa-person-walking-arrow-right"></i>
+        <a href="c++.html">
+          <h1>C++ Compiler</h1>
+        </a>
+      </div>
+
+
+      <div class="box">
+        <img src="images/c.png" alt="">
+        <i class="fa-solid fa-person-walking-arrow-right"></i>
+        <a href="c.html">
+          <h1>C Compiler</h1>
+        </a>
+      </div>
+
+      <div class="box">
+        <img src="images/java.png" alt="">
+        <i class="fa-solid fa-person-walking-arrow-right"></i>
+        <a href="java.html">
+          <h1>Java Compiler</h1>
+        </a>
+      </div>
+
+
+      <div class="box">
+        <img src="images/python.png" alt="">
+        <i class="fa-solid fa-person-walking-arrow-right"></i>
+        <a href="python.html">
+          <h1>Python Compiler</h1>
+        </a>
+      </div>
+
+
+
+
+    </div>
+
+  </section>
+  <section class="about">
+    <div id="Aboutt" class="about-con">
+      <h1>Online Compiler</h1>
+      <p>An online compiler is a web-based tool or service that allows users to write, compile, and run computer
+        programs or code snippets in various programming languages directly from a web browser, without the need to
+        install any software or development environments on their local computer. Online compilers are particularly
+        useful for quick code testing, sharing code with others, or for educational purposes. Here are some key features
+        and benefits of online compilers:</p>
+      <p>The main task of an online compiler is to make it easier for any user to build and run programs (which may be
+        written in any language). Moreover, these programs are executed without downloading any IDE (Integrated
+        Development Environment) or compiler. There is no requirement for a development kit on the client machine.</p>
+      <p>Using different online compilers at a single interface allows a programmer to compile and remove all errors and
+        efficiently store the bugs' output.</p>
+
+      <h1>Working Of The Online Compiler</h1>
+      <h2>The working of an online compiler involves a combination of server-side and client-side processes. Here's a
+        general overview of how an online compiler typically works:</h2>
+      <p>.The code undergoes the following procedure in an online compiler:</p>
+      <p>.Code is written on the code editor on the website.</p>
+      <p>.It is then sent from the webpage to the server.</p>
+      <p>.The content is saved by the server as a file.</p>
+      <p>.The file is processed as though it were a local source file.</p>
+      <p>.The result is computed and returned to the website.</p>
+
+      <h1>Benefits of using Online Compiler</h1>
+      <h2>Some benefits of using online compilers are:</h2>
+
+
+      <p>.No Setup is needed. </p>
+      <p>.There is no need for configuration. </p>
+      <p>.The Administration is not required. </p>
+      <p>.It is accessible from any location.</p>
+      <p>.It is capable of sharing resources.</p>
+      <p>.Collaboration is possible.</p>
+      <p>.No hardware restrictions (i.e., a database's capacity is more than your local storage).</p>
+
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="footer-con">
+      <div class="itemss item1  ">
+        <h3 style="color:#ffffff">Language Support</h3>
+        <p> <a href="PHPCodeMirror.html">PHP</a> </p>
+        <p><a href="JScodeMirror.html">JavaScript</a> </p>
+        <p><a href="python.html">Python</a> </p>
+        <p> <a href="c++.html">C++</a> </p>
+        <p> <a href="c.html">C</a> </p>
+        <p> <a href="java.html">Java</a> </p>
+      </div>
+
+
+
+      <!-- <div class="col-sm-6 col-md-3 border   boxx"> -->
+      <div class="itemss item2  ">
+        <h3 style="color:#ffffff">UseFull Links</h3>
+        <p> <a href="index.html">Home</a> </p>
+        <p> <a href="#Aboutt">About</a> </p>
+        <p><a href="feedback.html">FeedBack</a> </p>
+        <p> <a href="#compilerss">Compilers</a> </p>
+        <p> <a href="contact.html">Contact</a> </p>
+        <!-- <p> <a href="login.html">Login</a> </p> -->
+      </div>
+
+
+      <div class="itemss item3">
+        <h3 style="color:#ffffff">Coding Hub.</h3>
+        <p style="color:#ffffff">It Sis a web service that compiles and runs your code on their server in a sandboxed
+          environment. It is simple to use with a working internet connection and web browser.</p>
+      </div>
+    </div>
+
+    <div class="social "><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i
+          class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-linkedin"></i></a><a href="#"> <i
+          class="fa-brands fa-instagram"></i></a></div>
+
+  </div>
+  <p class="copyright">
+    <center> Coding Hub © 2018</center>
+  </p>
+
+  </div>
+
+
+  <script>
+    const checkLoggedIn = async () => {
+      let token = localStorage.getItem("token")
+      if (token) {
+        let resp = await fetch(`/check-login?token=${token}`)
+        let result = await resp.json()
+        // console.log(result.isvalid)
+        if (result.isValid) {
+          // hiding the login and signup button
+          let loginBtn = document.getElementById("login")
+          let signupBtn = document.getElementById("signup")
+          let fullName = document.getElementById("fullName")
+          let welcomeDiv = document.getElementById("welcomeDiv")
+          let header = document.getElementById("header")
+          header.style.margin = "0"
+          welcomeDiv.style.display = "flex"
+          loginBtn.style.display = "none"
+          signupBtn.style.display = "none"
+          fullName.innerText = result.fullName
+
+        }
+      }
+    }
+    checkLoggedIn()
+  </script>
+
+</body>
+
+</html>

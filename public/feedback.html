@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>feedback</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <style>
+*{
+	margin: 0px;
+	padding:0px;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+.feedback{
+	position: relative;
+	min-height: 100vh;
+	padding:50px 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background:url("codemirror/abstract-glowing-blue-binary-code-background-vector-34752617.jpg");
+	background-size:cover;
+}
+.feedback .container h2
+{
+    color: #fff;
+    text-align: center;
+    font-size: 40px;
+	font-weight: 500;
+
+}
+.feedback .container .form-group label
+{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 150;
+  
+}
+.btn {
+ --color: #719ee1;
+ --color2: rgb(242, 244, 244);
+ padding: 0.8em 1.75em;
+ background-color: transparent;
+ border-radius: 6px;
+ border: .3px solid var(--color);
+ transition: .5s;
+ position: relative;
+ overflow: hidden;
+ cursor: pointer;
+ z-index: 1;
+ font-weight: 300;
+ font-size: 17px;
+ font-family: 'Roboto', 'Segoe UI', sans-serif;
+ text-transform: uppercase;
+ color: var(--color);
+}
+
+.btn::after, .btn::before {
+ content: '';
+ display: block;
+ height: 100%;
+ width: 100%;
+ transform: skew(90deg) translate(-50%, -50%);
+ position: absolute;
+ inset: 50%;
+ left: 25%;
+ z-index: -1;
+ transition: .5s ease-out;
+ background-color: var(--color);
+}
+
+.btn::before {
+ top: -50%;
+ left: -25%;
+ transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::before {
+ transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::after {
+ transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btn:hover {
+ color: var(--color2);
+}
+
+.btn:active {
+ filter: brightness(.7);
+ transform: scale(.98);
+}
+
+    </style>
+	
+<section class="feedback">
+	<div class="container">
+		<h2>Feedback</h2>
+		<form action="#" class="form-group" onsubmit="return false">
+			<div>
+				<label for="customerName">Customer Name:</label>
+				<input type="text" class="form-control" id="customerName" name="Customer" placeholder="Enter your name" required="required" >
+
+			</div>
+			<div>
+				<label for="mobileNumber">Mobile Number:</label>
+                <input type="number" class="form-control" id="mobileNumber" name="Mobile Number" placeholder="Enter your mobile number" required="required">
+			</div>
+			<div>
+				<label for="email">Email:</label>
+				<input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required="required">
+
+			</div>
+
+			<div class ="form-check">
+				<label for="gender">Gender:</label>
+                <input type="radio" class="form-check-input"  name="gender" id="male" value="male">
+				<label class="form-check-label">Male</label>
+				<input type="radio" class="form-check-input"  name="gender" id="female" value="female" >
+				<label class="form-check-label">Female</label>
+			</div>
+			<div>
+				<label for="remarks">Remarks:</label>
+				<textarea class="form-control" rows="5" id="remarks" placeholder="Enter your remarks" required="required"></textarea>
+
+			</div>
+			<!-- <div class="form-check ">
+                    <input type="checkbox" class="form-check-input" name="Subscribe" id="subscribe" value="subscription" >
+				    <label class="form-check-label" >meri di gye sari information sahi hai </label>
+			</div> -->
+            <div class="form-check ">
+                <input type="checkbox" class="form-check-input" name="Subscribe" id="subscribe" value="subscription" >
+                <label class="form-check-label" > Accept Terms & Conditions </label>
+        </div>
+		<br>
+        <button class="btn"> Submit
+        </button>
+		</form>
+	</div>
+</section>
+</body>
+</html>
